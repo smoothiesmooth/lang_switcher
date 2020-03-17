@@ -2,14 +2,16 @@ from db import rus, eng
 import tkinter as tk
 
 firstclick = True
-def on_entry_click(event):
+txt = "Write your text here..."
+
+def on_text_click(event):
 	global firstclick
 	if firstclick: # if this is the first time they clicked it
 		firstclick = False
-		entry.delete(0, "end") # delete all the text in the entry
+		text.delete("0.0", "end") # delete all the text in the text
 
 def Rus():
-	s = entry.get()
+	s = text.get("0.0", "end")
 	out = ''
 	input = []
 	output = []
@@ -20,8 +22,9 @@ def Rus():
 	for x in output:
 		out+=x
 		label_rus.config(text=f'{out}')
+
 def Eng():
-	s = entry.get()
+	s = text.get("0.0", "end")
 	out = ''
 	input = []
 	output = []
@@ -39,6 +42,7 @@ win.geometry("700x400")
 win.iconbitmap(r'img\\icon.ico')
 win.resizable(width=False, height=False)
 win.configure(background="white")
+
 button1 = tk.Button(
     text="Rus",
     width=10,
@@ -48,6 +52,7 @@ button1 = tk.Button(
 	command=Rus,
 	borderwidth=0,
 )
+
 button2 = tk.Button(
     text="Eng",
     width=10,
@@ -57,17 +62,21 @@ button2 = tk.Button(
 	command=Eng,
 	borderwidth=0,
 )
+
 label_rus = tk.Label(text='', wraplength=290, bg="white", fg="black")
-label_rus.place(x=10,y=80)
 label_eng = tk.Label(text='', wraplength=290, bg="white", fg="black")
-label_eng.place(x=400,y=80)
-entry = tk.Entry(fg="black", width=50, borderwidth=1)
-entry.insert(0, 'Write text here')
-entry.bind('<FocusIn>', on_entry_click)
-entry.pack()
-inf = tk.Label(text="Beta 0.0.2, developed by Gregor Zhilich", bg="white", fg="black")
-button1.place(x=220,y=30)
-button2.place(x=400,y=30)
+text = tk.Text(fg="black", width=80, height=3, borderwidth=0.5)
+text.insert("0.0", 'Write text here')
+text.bind('<FocusIn>', on_text_click)
+inf = tk.Label(text="Beta 0.0.3, developed by Gregor Zhilich", bg="white", fg="black")
+scroll = tk.Scrollbar(command=text.yview)
+
+scroll.pack(side="right", fill="y")
+label_rus.place(x=10,y=100)
+label_eng.place(x=400,y=100)
+text.pack()
+button1.place(x=220,y=50)
+button2.place(x=400,y=50)
 inf.place(x=0,y=380)
 
 win.mainloop()
