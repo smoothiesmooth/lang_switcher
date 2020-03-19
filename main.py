@@ -65,7 +65,7 @@ button2 = tk.Button(
 
 label_rus = tk.Label(text='', wraplength=290, bg="white", fg="black")
 label_eng = tk.Label(text='', wraplength=290, bg="white", fg="black")
-text = tk.Text(fg="black", width=80, height=3, borderwidth=0.5)
+text = tk.Text(fg="black", font="courier", width=80, height=3, borderwidth=0.5)
 text.insert("0.0", 'Write text here')
 text.bind('<FocusIn>', on_text_click)
 inf = tk.Label(text="Beta 0.0.3, developed by Gregor Zhilich", bg="white", fg="black")
