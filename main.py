@@ -19,6 +19,7 @@ class Main(tk.Frame):
 
 		def Rus():
 			s = text.get("0.0", "end")
+			s = s.lower()
 			out = ''
 			input = []
 			output = []
@@ -32,6 +33,7 @@ class Main(tk.Frame):
 
 		def Eng():
 			s = text.get("0.0", "end")
+			s = s.lower()
 			out = ''
 			input = []
 			output = []
@@ -101,7 +103,7 @@ class Info(tk.Toplevel):
 		self.grab_set()
 		self.focus_set()
 		self.label = tk.Label(self, text='''Lantcher by Gregor Zhilich
-Version 0.0.4 beta''', bg=colour, fg="#ff9500")
+Version 0.0.5 beta''', bg=colour, fg="#ff9500")
 		self.label.pack()
 
 
